@@ -18,10 +18,13 @@ spec:
           mountPath: /var/secrets
         ports:
         - containerPort: 8000
-  volumes:
-  - name: secrets-volume
-    secret:
-      secretName: production-config
+        env:
+        - name: NODE_ENV
+          value: "production"
+      volumes:
+      - name: secrets-volume
+        secret:
+          secretName: production-config
 ---
 apiVersion: v1
 kind: Service
