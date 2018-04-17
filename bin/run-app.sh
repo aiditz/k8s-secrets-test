@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-ln -s /var/secrets/local-production-config.json /app/config/local-production.json
+cp /var/secrets/local-production.json /app/config/local-production.json
+echo "Secret config copied"
+
 node /app/index.js
