@@ -1,0 +1,3 @@
+{
+  "secret": "overwritten by kubernetes secrets mechanism"
+}

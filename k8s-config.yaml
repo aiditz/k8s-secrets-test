@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-secrets-test
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: k8s-secrets-test
+    spec:
+      containers:
+      - name: k8s-secrets-test
+        image: repos.azurecr.io/k8s-secrets-test:latest
+        volumeMounts:
+        - name: secrets-volume
+          readOnly: true
+          mountPath: /var/secrets
+        ports:
+        - containerPort: 8000
+  volumes:
+  - name: secrets-volume
+    secret:
+      secretName: production-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-secrets-test
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+  selector:
+    app: k8s-secrets-test
