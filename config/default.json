@@ -1,4 +1,4 @@
 {
   "configFile": "default",
-  "secret": "none (this should be overwritten)"
+  "secret": "none (you should not see this)"
 }
