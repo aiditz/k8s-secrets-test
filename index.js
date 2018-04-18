@@ -1,7 +1,7 @@
 const config = require('config');
 const http = require('http');
 
-const GUID = Math.floor(Math.random() * 10000);
+const ID = Math.floor(Math.random() * 10000);
 const startDate = new Date();
 
 const CONFIG = {
@@ -9,14 +9,14 @@ const CONFIG = {
   secret: config.get('secret')
 };
 
-console.log(`Starting instance GUID = ${GUID}...`);
+console.log(`Starting instance ID = ${ID}...`);
 
 const server = http.createServer((req, res) => {
   const html = `
     <html>
       <body>
         <h2>Hello!</h2>
-        <p>My GUID: ${GUID}</p>
+        <p>My ID: ${ID}</p>
         <p>Start time: ${startDate.toLocaleString()}</p>
         <p>Current time: ${new Date().toLocaleString()}</p>
         <p>Uptime: ${Number((Date.now() - startDate.valueOf()) / 1000)} sec</p>
